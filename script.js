@@ -54,49 +54,49 @@ const timelineEvents = [
 const galleryImages = [
     { 
         id: 1, 
-        src: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/earth.jpg', 
         alt: 'Земля из космоса', 
         title: 'Голубая планета' 
     },
     { 
         id: 2, 
-        src: 'https://images.unsplash.com/photo-1630841539293-bd20634c5d72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/jupiter.jpg', 
         alt: 'Юпитер', 
         title: 'Газовый гигант' 
     },
     { 
         id: 3, 
-        src: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/nebula.jpg', 
         alt: 'Туманность Ориона', 
         title: 'Колыбель звёзд' 
     },
     { 
         id: 4, 
-        src: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/mars.jpg', 
         alt: 'Марс', 
         title: 'Красная планета' 
     },
     { 
         id: 5, 
-        src: 'https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/saturn.jpg', 
         alt: 'Сатурн с кольцами', 
         title: 'Властелин колец' 
     },
     { 
         id: 6, 
-        src: 'https://images.unsplash.com/photo-1535268368435-70e4c9c8bad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/iss.jpg', 
         alt: 'Международная космическая станция', 
         title: 'Дом на орбите' 
     },
     { 
         id: 7, 
-        src: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/andromeda.jpg', 
         alt: 'Галактика Андромеды', 
         title: 'Соседняя галактика' 
     },
     { 
         id: 8, 
-        src: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80', 
+        src: 'content/gallery/hubble.jpg', 
         alt: 'Снимок телескопа Хаббл', 
         title: 'Взгляд во Вселенную' 
     }
