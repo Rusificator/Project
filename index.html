@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космический исследователь - Исследуйте Вселенную</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="feedbackModal.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🌌</span>
+                    <span class="logo-text">Космический исследователь</span>
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active">Главная</a></li>
+                        <li><a href="#planets" class="nav-link">Планеты</a></li>
+                        <li><a href="#missions" class="nav-link">Миссии</a></li>
+                        <li><a href="#gallery" class="nav-link">Галерея</a></li>
+                        
+                        <!-- Выпадающее меню -->
+                        <li class="nav-item dropdown">
+                            <button class="nav-link dropdown-toggle">
+                                Разное
+                                <span class="dropdown-arrow">▼</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <span class="dropdown-icon">⚖️</span>
+                                        Калькулятор веса на планетах
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <span class="dropdown-icon">🧠</span>
+                                        Космическая викторина
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <span class="dropdown-icon">🌍</span>
+                                        Космический адрес
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <span class="dropdown-icon">🌐</span>
+                                        3D Модель Солнечной системы
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <button class="contact-btn" id="openFeedbackBtn">
+                                Связь с нами
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Кнопка мобильного меню -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Модальное окно обратной связи -->
+<div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Обратная связь</h2>
+            <button 
+                type="button" 
+                class="close-btn"
+                id="modalCloseBtn"
+                aria-label="Закрыть"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <form id="feedbackForm" class="feedback-form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">ФИО *</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        name="fullName"
+                        required
+                        placeholder="Иванов Иван Иванович"
+                    >
+                    <div class="error-message" id="fullNameError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email *</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="example@mail.com"
+                    >
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Телефон *</label>
+                    <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        required
+                        placeholder="Введите ваш телефон"
+                    >
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Сообщение *</label>
+                    <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="3" 
+                    required
+                    placeholder="Введите ваше сообщение..."
+                ></textarea>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input
+                        type="checkbox"
+                        class="form-checkbox"
+                        id="agree"
+                        name="agree"
+                        required
+                    >
+                    <label for="agree" class="checkbox-label">
+                        <span class="checkbox-text">Согласен с политикой обработки персональных данных *</span>
+                    </label>
+                    <div class="error-message" id="agreeError"></div>
+                </div>
+
+                <!-- Сообщения об успехе/ошибке -->
+                <div id="formMessage" class="message" style="display: none;"></div>
+
+                <div class="form-buttons">
+                    <button 
+                        type="button" 
+                        class="clear-btn"
+                        id="clearFormBtn"
+                    >
+                        Очистить
+                    </button>
+                    <button 
+                        type="submit" 
+                        class="submit-btn"
+                        id="submitBtn"
+                    >
+                        <span id="submitText">Отправить</span>
+                        <span id="loadingSpinner" class="loading-spinner" style="display: none;"></span>
+                    </button>
+                </div>
+
+                <!-- Скрытые поля для Formcarry -->
+                <input type="hidden" name="_gotcha" style="display:none !important">
+                <input type="hidden" name="_subject" value="Новое сообщение с сайта Космический исследователь">
+                <input type="hidden" name="_language" value="ru">
+            </form>
+        </div>
+    </div>
+</div>
+
+    <!-- Основной контент -->
+    <div class="home-page">
+        <!-- Видео фон -->
+        <div class="video-background">
+            <video 
+                autoplay 
+                muted 
+                loop 
+                class="background-video"
+                playsinline
+            >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-planet-earth-in-space-3445-large.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <!-- Hero секция -->
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Откройте <span class="highlight">тайны Вселенной</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Отправьтесь в незабываемое путешествие по Солнечной системе 
+                    и за её пределы
+                </p>
+                <button class="cta-button" id="startJourneyBtn">
+                    <span class="cta-icon">🚀</span>
+                    Отправиться в путешествие
+                </button>
+            </div>
+        </div>
+
+        <!-- Секция возможностей -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Что вас ждет?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🪐</div>
+                        <h3>Планеты Солнечной системы</h3>
+                        <p>Изучите все 8 планет с уникальными характеристиками и фотографиями</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h3>Интересные факты</h3>
+                        <p>Узнайте удивительные научные открытия и космические явления</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔭</div>
+                        <h3>Космические миссии</h3>
+                        <p>Исследуйте исторические и современные космические экспедиции</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция таймлайна -->
+        <section class="timeline-section" id="timelineSection">
+            <div class="container">
+                <div class="timeline-header">
+                    <h2>Космический прогресс</h2>
+                    <p class="timeline-subtitle">
+                        Ключевые вехи в освоении космоса: от первых спутников до межзвездных миссий
+                    </p>
+                </div>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <!-- Таймлайн события будут добавлены через JavaScript -->
+                </div>
+                
+                <div class="timeline-note">
+                    <p>История продолжается: новые миссии планируются каждый год</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция статистики -->
+        <section class="statistics-section" id="statisticsSection">
+            <div class="container">
+                <div class="statistics-header">
+                    <h2>Космос в цифрах</h2>
+                    <p class="statistics-subtitle">
+                        Удивительные факты о нашей Вселенной, которые заставят вас задуматься
+                    </p>
+                </div>
+                
+                <div class="statistics-grid">
+                    <div class="stat-item">
+                        <div class="stat-line"></div>
+                        <div class="stat-icon">🪐</div>
+                        <div class="stat-number-container">
+                            <span class="stat-number" data-target="8">0</span>
+                        </div>
+                        <div class="stat-label">
+                            <span class="stat-label-main">планет</span>
+                            <span class="stat-label-sub">в Солнечной системе</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-line"></div>
+                        <div class="stat-icon">🌕</div>
+                        <div class="stat-number-container">
+                            <span class="stat-number" data-target="200">0</span>
+                        </div>
+                        <div class="stat-label">
+                            <span class="stat-label-main">спутников</span>
+                            <span class="stat-label-sub">вращается вокруг планет</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-line"></div>
+                        <div class="stat-icon">☄️</div>
+                        <div class="stat-number-container">
+                            <span class="stat-number" data-target="500000">0</span>
+                            <span class="stat-plus">+</span>
+                        </div>
+                        <div class="stat-label">
+                            <span class="stat-label-main">космических объектов</span>
+                            <span class="stat-label-sub">отслеживается NASA</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-line"></div>
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-number-container">
+                            <span class="stat-number" data-target="197">0</span>
+                        </div>
+                        <div class="stat-label">
+                            <span class="stat-label-main">космических миссий</span>
+                            <span class="stat-label-sub">успешно выполнено</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="statistics-note">
+                    <p>Все числа основаны на актуальных научных данных и обновляются по мере получения новой информации</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция галереи -->
+        <section class="auto-gallery-section">
+            <div class="container">
+                <div class="gallery-header">
+                    <h2>Космос в объективе</h2>
+                    <p class="gallery-subtitle">
+                        Самые впечатляющие фотографии космоса, сделанные телескопами и космическими аппаратами
+                    </p>
+                </div>
+                
+                <div class="gallery-container">
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Изображения галереи будут добавлены через JavaScript -->
+                    </div>
+                </div>
+
+                <div class="gallery-controls">
+                    <div class="control-info">
+                        <span class="control-icon">🌍</span>
+                        <span>Впечатляющие изображения</span>
+                    </div>
+                    <button class="view-gallery-btn" id="viewGalleryBtn">
+                        <span class="btn-icon">📷</span>
+                        Смотреть всю галерею
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Космический исследователь</h3>
+                    <p>Исследуйте тайны Вселенной вместе с нами</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Разделы</h4>
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#planets">Планеты</a></li>
+                        <li><a href="#missions">Космические миссии</a></li>
+                        <li><a href="#gallery">Галерея</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>email: info@cosmic-explorer.ru</p>
+                    <p>телефон: +7 (999) 123-45-67</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Космический исследователь. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем JavaScript файлы -->
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+    <script src="feedbackForm.js"></script>
+</body>
+</html>
