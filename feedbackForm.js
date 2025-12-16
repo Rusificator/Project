@@ -13,20 +13,18 @@ class FeedbackForm {
         this.loadingSpinner = document.getElementById('loadingSpinner');
         this.formMessage = document.getElementById('formMessage');
         
-        // Поля формы
+        // Поля формы (телефон удален)
         this.fields = {
             fullName: document.getElementById('fullName'),
             email: document.getElementById('email'),
-            phone: document.getElementById('phone'),
             message: document.getElementById('message'),
             agree: document.getElementById('agree')
         };
         
-        // Сообщения об ошибках
+        // Сообщения об ошибках (телефон удален)
         this.errorFields = {
             fullName: document.getElementById('fullNameError'),
             email: document.getElementById('emailError'),
-            phone: document.getElementById('phoneError'),
             message: document.getElementById('messageError'),
             agree: document.getElementById('agreeError')
         };
@@ -67,14 +65,13 @@ class FeedbackForm {
         });
     }
     
-    // Получение данных формы из LocalStorage
+    // Получение данных формы из LocalStorage (телефон удален)
     getFormDataFromStorage() {
         try {
             const savedData = localStorage.getItem('feedbackFormData');
             return savedData ? JSON.parse(savedData) : {
                 fullName: '',
                 email: '',
-                phone: '',
                 message: '',
                 agree: false
             };
@@ -88,18 +85,16 @@ class FeedbackForm {
         return {
             fullName: '',
             email: '',
-            phone: '',
             message: '',
             agree: false
         };
     }
     
-    // Восстановление данных в форму
+    // Восстановление данных в форму (телефон удален)
     restoreFormData() {
         if (this.formData) {
             this.fields.fullName.value = this.formData.fullName || '';
             this.fields.email.value = this.formData.email || '';
-            this.fields.phone.value = this.formData.phone || '';
             this.fields.message.value = this.formData.message || '';
             this.fields.agree.checked = this.formData.agree || false;
             
@@ -129,12 +124,11 @@ class FeedbackForm {
         });
     }
     
-    // Сохранение данных формы
+    // Сохранение данных формы (телефон удален)
     saveFormData() {
         const formData = {
             fullName: this.fields.fullName.value.trim(),
             email: this.fields.email.value.trim(),
-            phone: this.fields.phone.value.trim(),
             message: this.fields.message.value.trim(),
             agree: this.fields.agree.checked
         };
@@ -174,7 +168,7 @@ class FeedbackForm {
         }
     }
     
-    // Валидация при потере фокуса
+    // Валидация при потере фокуса (телефон удален)
     setupBlurValidation() {
         this.fields.fullName.addEventListener('blur', () => {
             this.validateFullName();
@@ -182,10 +176,6 @@ class FeedbackForm {
         
         this.fields.email.addEventListener('blur', () => {
             this.validateEmail();
-        });
-        
-        this.fields.phone.addEventListener('blur', () => {
-            this.validatePhone();
         });
         
         this.fields.message.addEventListener('blur', () => {
@@ -197,7 +187,7 @@ class FeedbackForm {
         });
     }
     
-    // Валидация полей
+    // Валидация полей (телефон удален)
     validateFullName() {
         const value = this.fields.fullName.value.trim();
         if (!value) {
@@ -225,38 +215,6 @@ class FeedbackForm {
             return false;
         }
         this.clearFieldError('email');
-        return true;
-    }
-    
-    validatePhone() {
-        const value = this.fields.phone.value.trim();
-        
-        if (!value) {
-            this.showFieldError('phone', 'Пожалуйста, введите номер телефона');
-            return false;
-        }
-        
-        // Упрощенная валидация телефона
-        // Минимум 5 цифр (для очень коротких номеров)
-        const phoneDigits = value.replace(/\D/g, '');
-        if (phoneDigits.length < 5) {
-            this.showFieldError('phone', 'Номер телефона слишком короткий');
-            return false;
-        }
-        
-        // Максимум 15 цифр (международные номера)
-        if (phoneDigits.length > 15) {
-            this.showFieldError('phone', 'Номер телефона слишком длинный');
-            return false;
-        }
-        
-        // Проверка на наличие хотя бы одной цифры (базовая проверка)
-        if (!/\d/.test(value)) {
-            this.showFieldError('phone', 'Номер телефона должен содержать цифры');
-            return false;
-        }
-        
-        this.clearFieldError('phone');
         return true;
     }
     
@@ -290,12 +248,11 @@ class FeedbackForm {
         return true;
     }
     
-    // Общая валидация формы
+    // Общая валидация формы (телефон удален)
     validateForm() {
         const validations = [
             this.validateFullName(),
             this.validateEmail(),
-            this.validatePhone(),
             this.validateMessage(),
             this.validateAgreement()
         ];
@@ -350,7 +307,7 @@ class FeedbackForm {
         this.formMessage.style.display = 'none';
     }
     
-    // Обработка отправки формы
+    // Обработка отправки формы (телефон удален)
     async handleSubmit() {
         // Валидация
         if (!this.validateForm()) {
@@ -369,7 +326,6 @@ class FeedbackForm {
             // Добавляем данные формы
             formData.append('fullName', this.fields.fullName.value.trim());
             formData.append('email', this.fields.email.value.trim());
-            formData.append('phone', this.fields.phone.value.trim());
             formData.append('message', this.fields.message.value.trim());
             formData.append('agree', this.fields.agree.checked);
             
@@ -434,7 +390,6 @@ class FeedbackForm {
         // Сброс значений полей
         this.fields.fullName.value = '';
         this.fields.email.value = '';
-        this.fields.phone.value = '';
         this.fields.message.value = '';
         this.fields.agree.checked = false;
         
