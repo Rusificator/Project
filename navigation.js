@@ -1,4 +1,16 @@
-
+// Данные для выпадающего меню
+const dropdownData = [
+    {
+        text: 'Калькулятор веса на планетах',
+        icon: '⚖️',
+        href: '#calculator'
+    },
+    {
+        text: '3D Модель Солнечной системы',
+        icon: '🌐',
+        href: '#solar-model'
+    }
+];
 
 // Класс для управления навигацией
 class Navigation {
@@ -96,6 +108,9 @@ class Navigation {
             const dropdownToggle = this.dropdown.querySelector('.dropdown-toggle');
             const dropdownMenu = this.dropdown.querySelector('.dropdown-menu');
             
+            // Очистка меню перед добавлением элементов (на случай дублирования)
+            dropdownMenu.innerHTML = '';
+            
             // Создание элементов выпадающего меню
             dropdownData.forEach(item => {
                 const li = document.createElement('li');
@@ -137,6 +152,8 @@ class Navigation {
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     dropdownMenu.style.maxHeight = null;
+                } else {
+                    dropdownMenu.style.maxHeight = null;
                 }
             });
         }
@@ -144,53 +161,49 @@ class Navigation {
     
     // Плавная прокрутка
     initSmoothScroll() {
-         const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            
-            // Пропускаем якорь "#"
-            if (href === '#') return;
-            
-            // Пропускаем ссылки на другие страницы
-            if (href.includes('.html')) return;
-            
-            e.preventDefault();
-            
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
                 
-                // Обновление активной ссылки
-                this.updateActiveLink(link);
-            }
+                // Пропускаем якорь "#"
+                if (href === '#') return;
+                
+                // Пропускаем ссылки на другие страницы
+                if (href.includes('.html')) return;
+                
+                e.preventDefault();
+                
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Обновление активной ссылки
+                    this.updateActiveLink(link);
+                }
+            });
         });
-    });
         
-        
-        
-    
-
-// Обработка кнопки "Смотреть всю галерею"
- const viewGalleryBtn = document.getElementById('viewGalleryBtn');
-    if (viewGalleryBtn) {
-        viewGalleryBtn.addEventListener('click', () => {
-            // В демо-версии просто скроллим к галерее
-            const gallerySection = document.querySelector('.auto-gallery-section');
-            if (gallerySection) {
-                window.scrollTo({
-                    top: gallerySection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
+        // Обработка кнопки "Смотреть всю галерею"
+        const viewGalleryBtn = document.getElementById('viewGalleryBtn');
+        if (viewGalleryBtn) {
+            viewGalleryBtn.addEventListener('click', () => {
+                // В демо-версии просто скроллим к галерее
+                const gallerySection = document.querySelector('.auto-gallery-section');
+                if (gallerySection) {
+                    window.scrollTo({
+                        top: gallerySection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
     }
     
     updateActiveLink(clickedLink) {

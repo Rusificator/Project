@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="feedbackModal.css">
+    <link rel="stylesheet" href="footerForm.css">
+    <link rel="stylesheet" href="weight-calculator.css">
 </head>
 <body>
     <!-- Шапка сайта -->
@@ -35,23 +37,12 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#" class="dropdown-link">
+                                    <a href="#calculator" class="dropdown-link">
                                         <span class="dropdown-icon">⚖️</span>
                                         Калькулятор веса на планетах
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="dropdown-link">
-                                        <span class="dropdown-icon">🧠</span>
-                                        Космическая викторина
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="dropdown-link">
-                                        <span class="dropdown-icon">🌍</span>
-                                        Космический адрес
-                                    </a>
-                                </li>
+                            
                                 <li>
                                     <a href="#" class="dropdown-link">
                                         <span class="dropdown-icon">🌐</span>
@@ -326,7 +317,7 @@
         </section>
 
         <!-- Секция галереи -->
-        <section class="auto-gallery-section">
+        <section class="auto-gallery-section" id="gallery">
             <div class="container">
                 <div class="gallery-header">
                     <h2>Космос в объективе</h2>
@@ -353,40 +344,197 @@
                 </div>
             </div>
         </section>
-    </div>
 
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Космический исследователь</h3>
-                    <p>Исследуйте тайны Вселенной вместе с нами</p>
+
+
+
+
+
+<!-- Секция калькулятора веса -->
+<section class="weight-calculator-section" id="calculator">
+    <div class="container">
+        <div class="calculator-content">
+            <div class="calculator-header">
+                <h2 class="page-title">Калькулятор веса на планетах</h2>
+                <p class="page-subtitle">
+                    Узнайте, сколько бы вы весили на других планетах Солнечной системы
+                </p>
+            </div>
+
+            <!-- Панель ввода -->
+            <div class="input-panel">
+                <div class="weight-input-group">
+                    <label for="earth-weight" class="input-label">
+                        Ваш вес на Земле:
+                    </label>
+                    <div class="input-with-unit">
+                        <input
+                            type="number"
+                            id="earth-weight"
+                            class="weight-input"
+                            placeholder="Введите ваш вес"
+                            min="0"
+                            step="0.1"
+                        />
+                        <select class="unit-select" id="unit-select">
+                            <option value="kg">кг</option>
+                            <option value="lb">фунт</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Разделы</h4>
-                    <ul>
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#planets">Планеты</a></li>
-                        <li><a href="#missions">Космические миссии</a></li>
-                        <li><a href="#gallery">Галерея</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <p>email: info@cosmic-explorer.ru</p>
-                    <p>телефон: +7 (999) 123-45-67</p>
+                
+                <div class="current-weight" id="current-weight-display">
+                    <span>Ваш вес: </span>
+                    <strong id="current-weight-value">0 кг</strong>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Космический исследователь. Все права защищены.</p>
+
+            <!-- Результаты -->
+            <div class="results-section" id="results-section" style="display: none;">
+                <h3 class="results-title">Ваш вес на других небесных телах:</h3>
+                
+                <div class="planets-grid" id="planets-grid">
+                    <!-- Планеты будут добавлены через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Подсказка при пустом вводе -->
+            <div class="empty-state" id="empty-state">
+                <div class="empty-icon">⚖️</div>
+                <h3>Введите ваш вес</h3>
+                <p>Узнайте, как гравитация других планет повлияет на ваш вес</p>
+                <div class="fun-facts">
+                    <div class="fun-fact">
+                        <span>🪐</span>
+                        На Юпитере ваш вес в 2.3 раза больше!
+                    </div>
+                    <div class="fun-fact">
+                        <span>🌙</span>
+                        На Луне ваш вес уменьшится в 6 раз!
+                    </div>
+                    <div class="fun-fact">
+                        <span>🪐</span>
+                        На Плутоне вы почти невесомы!
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+    </div>
+
+   <!-- Футер -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Космический исследователь</h3>
+                <p>Исследуйте тайны Вселенной вместе с нами</p>
+            </div>
+            <div class="footer-section">
+                <h4>Разделы</h4>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#planets">Планеты</a></li>
+                    <li><a href="#missions">Космические миссии</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-form-section">
+                <h4>Свяжитесь с нами</h4>
+                <form id="footerContactForm" class="footer-contact-form">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="footerFullName"
+                            name="fullName"
+                            required
+                            placeholder="ФИО *"
+                        >
+                        <div class="error-message" id="footerFullNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="tel"
+                            class="form-control"
+                            id="footerPhone"
+                            name="phone"
+                            required
+                            placeholder="Телефон *"
+                        >
+                        <div class="error-message" id="footerPhoneError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="footerEmail"
+                            name="email"
+                            required
+                            placeholder="Email *"
+                        >
+                        <div class="error-message" id="footerEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea
+                            class="form-control"
+                            id="footerMessage"
+                            name="message"
+                            rows="3"
+                            required
+                            placeholder="Сообщение *"
+                        ></textarea>
+                        <div class="error-message" id="footerMessageError"></div>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input
+                            type="checkbox"
+                            class="form-checkbox"
+                            id="footerAgree"
+                            name="agree"
+                            required
+                        >
+                        <label for="footerAgree" class="checkbox-label">
+                            <span class="checkbox-text">Согласен с политикой обработки персональных данных *</span>
+                        </label>
+                        <div class="error-message" id="footerAgreeError"></div>
+                    </div>
+                    <div id="footerFormMessage" class="message" style="display: none;"></div>
+                    <button 
+                        type="submit" 
+                        class="submit-btn"
+                        id="footerSubmitBtn"
+                    >
+                        <span id="footerSubmitText">Отправить</span>
+                        <span id="footerLoadingSpinner" class="loading-spinner" style="display: none;"></span>
+                    </button>
+                    <!-- Скрытые поля для Formcarry -->
+                    <input type="hidden" name="_gotcha" style="display:none !important">
+                    <input type="hidden" name="_subject" value="Сообщение из футера Космический исследователь">
+                    <input type="hidden" name="_language" value="ru">
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Космический исследователь. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
     <!-- Подключаем JavaScript файлы -->
     <script src="script.js"></script>
     <script src="navigation.js"></script>
     <script src="feedbackForm.js"></script>
+    <script src="footerForm.js"></script>
+    <script src="weight-calculator.js"></script>
 </body>
 </html>

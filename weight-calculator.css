@@ -1,0 +1,441 @@
+/* weight-calculator.css */
+
+.weight-calculator-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, 
+        rgba(15, 20, 45, 0.95) 0%, 
+        rgba(25, 30, 65, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.weight-calculator-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(102, 187, 106, 0.4) 50%, 
+        transparent 100%);
+}
+
+.calculator-content {
+    position: relative;
+    z-index: 2;
+}
+
+.calculator-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    color: white;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Панель ввода */
+.input-panel {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weight-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-label {
+    display: block;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.input-with-unit {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.weight-input {
+    flex: 1;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white; 
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.weight-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.weight-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.unit-select {
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 100px;
+}
+.unit-select option {
+    background-color: white; /* Белый фон для опций */
+    color: #333; /* Темный текст */
+}
+.unit-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.current-weight {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.current-weight strong {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Сетка планет */
+.results-section {
+    margin-top: 3rem;
+}
+
+.results-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #42dcff, #bd34fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.planets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.planet-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.planet-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--weight-color) 0%, transparent 100%);
+}
+
+.planet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--weight-color);
+}
+
+.planet-card.selected {
+    border-color: var(--weight-color);
+    transform: scale(1.02);
+    box-shadow: 0 0 30px var(--weight-color-shadow);
+}
+
+.planet-image {
+    position: relative;
+    height: 120px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planet-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--weight-color) 0%, var(--weight-color-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 8px 20px var(--weight-color-shadow);
+}
+
+.gravity-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.planet-info {
+    text-align: center;
+}
+
+.planet-name {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.planet-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.weight-result {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.weight-value {
+    color: var(--weight-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.weight-unit {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.weight-comparison {
+    color: var(--weight-color);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.planet-fact {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--weight-color);
+}
+
+/* Состояние пустого ввода */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.empty-state h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.fun-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.fun-fact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fun-fact span {
+    font-size: 1.5rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .input-panel {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    .input-with-unit {
+        flex-direction: column;
+    }
+    
+    .unit-select {
+        width: 100%;
+    }
+    
+    .planets-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .weight-value {
+        font-size: 2rem;
+    }
+    
+    .empty-state {
+        margin: 1rem;
+        padding: 2rem 1rem;
+    }
+    
+    .fun-facts {
+        gap: 0.75rem;
+    }
+    
+    .fun-fact {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-header {
+        margin-bottom: 2rem;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .planet-card {
+        padding: 1rem;
+    }
+    
+    .planet-name {
+        font-size: 1.2rem;
+    }
+    
+    .weight-value {
+        font-size: 1.8rem;
+    }
+}
+
+/* Анимации */
+@keyframes weightPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.planet-card.selected .weight-value {
+    animation: weightPulse 1s ease-in-out;
+}
+
+/* Планетные эмодзи */
+.planet-icon.mercury::after { content: "🪐"; }
+.planet-icon.venus::after { content: "♀"; }
+.planet-icon.earth::after { content: "🌍"; }
+.planet-icon.moon::after { content: "🌙"; }
+.planet-icon.mars::after { content: "♂"; }
+.planet-icon.jupiter::after { content: "♃"; }
+.planet-icon.saturn::after { content: "♄"; }
+.planet-icon.uranus::after { content: "♅"; }
+.planet-icon.neptune::after { content: "♆"; }
+.planet-icon.pluto::after { content: "♇"; }
