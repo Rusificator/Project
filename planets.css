@@ -1,0 +1,570 @@
+/* planets.css */
+
+/* Стили для страницы планет */
+.planets-page {
+    padding: 100px 0 4rem;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+/* Заголовок страницы */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+}
+
+.title-icon {
+    margin-right: 0.5rem;
+    font-size: 2.5rem;
+    vertical-align: middle;
+    animation: rotate 20s linear infinite;
+    display: inline-block;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+}
+
+.page-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    min-width: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #42dcff, #bd34fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Сетка планет */
+.planets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.planet-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.planet-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--planet-color) 0%, transparent 100%);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+}
+
+.planet-card:hover::before {
+    transform: translateX(0);
+}
+
+.planet-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--planet-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.planet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+}
+
+.planet-emoji {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--planet-bg);
+    border-radius: 50%;
+    box-shadow: 0 5px 15px var(--planet-shadow);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.planet-card:hover .planet-emoji {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 8px 20px var(--planet-shadow);
+}
+
+.planet-titles {
+    flex: 1;
+}
+
+.planet-name {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 0 0.25rem;
+    font-weight: 700;
+}
+
+.planet-type {
+    color: var(--planet-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.planet-info {
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.planet-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.planet-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-label-small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    margin-bottom: 0.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.stat-value {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.explore-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(45deg, var(--planet-color), var(--planet-color-dark));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.explore-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--planet-shadow);
+}
+
+.explore-btn:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 0.9rem;
+}
+
+/* Секция карликовых планет */
+.category-section {
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-title {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.category-description {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.dwarf-planets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.dwarf-planet-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dwarf-planet-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dwarf-planet-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.dwarf-planet-emoji {
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.dwarf-planet-name {
+    color: white;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.dwarf-planet-description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Информационная секция */
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.info-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.info-card h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .planets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .page-stats {
+        gap: 1.5rem;
+    }
+    
+    .stat {
+        min-width: 110px;
+        padding: 0.875rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .planets-page {
+        padding: 100px 0 3rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .title-icon {
+        font-size: 1.8rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1.05rem;
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .page-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .stat {
+        width: 180px;
+    }
+    
+    .planets-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .info-section {
+        grid-template-columns: 1fr;
+        margin-top: 3rem;
+    }
+    
+    .category-section {
+        padding: 1.25rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .title-icon {
+        font-size: 1.6rem;
+    }
+    
+    .planet-card {
+        padding: 1.25rem;
+    }
+    
+    .planet-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .planet-emoji {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+    }
+    
+    .planet-name {
+        font-size: 1.4rem;
+    }
+    
+    .dwarf-planets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .planet-stats {
+        grid-template-columns: 1fr;
+        gap: 0.375rem;
+    }
+    
+    .stat-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.375rem 0.5rem;
+    }
+    
+    .stat-label-small {
+        margin-bottom: 0;
+        font-size: 0.65rem;
+    }
+    
+    .stat-value {
+        font-size: 0.85rem;
+    }
+}
+
+/* Цвета для планет */
+.mercury {
+    --planet-color: #9c9c9c;
+    --planet-color-dark: #7a7a7a;
+    --planet-bg: linear-gradient(135deg, #9c9c9c, #7a7a7a);
+    --planet-shadow: rgba(156, 156, 156, 0.3);
+}
+
+.venus {
+    --planet-color: #ffcc99;
+    --planet-color-dark: #e6b386;
+    --planet-bg: linear-gradient(135deg, #ffcc99, #e6b386);
+    --planet-shadow: rgba(255, 204, 153, 0.3);
+}
+
+.earth {
+    --planet-color: #4fc3f7;
+    --planet-color-dark: #29b6f6;
+    --planet-bg: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    --planet-shadow: rgba(79, 195, 247, 0.3);
+}
+
+.mars {
+    --planet-color: #ff6b6b;
+    --planet-color-dark: #f44336;
+    --planet-bg: linear-gradient(135deg, #ff6b6b, #f44336);
+    --planet-shadow: rgba(255, 107, 107, 0.3);
+}
+
+.jupiter {
+    --planet-color: #ffa726;
+    --planet-color-dark: #ff9800;
+    --planet-bg: linear-gradient(135deg, #ffa726, #ff9800);
+    --planet-shadow: rgba(255, 167, 38, 0.3);
+}
+
+.saturn {
+    --planet-color: #ffd54f;
+    --planet-color-dark: #ffca28;
+    --planet-bg: linear-gradient(135deg, #ffd54f, #ffca28);
+    --planet-shadow: rgba(255, 213, 79, 0.3);
+}
+
+.uranus {
+    --planet-color: #80deea;
+    --planet-color-dark: #4dd0e1;
+    --planet-bg: linear-gradient(135deg, #80deea, #4dd0e1);
+    --planet-shadow: rgba(128, 222, 234, 0.3);
+}
+
+.neptune {
+    --planet-color: #42a5f5;
+    --planet-color-dark: #2196f3;
+    --planet-bg: linear-gradient(135deg, #42a5f5, #2196f3);
+    --planet-shadow: rgba(66, 165, 245, 0.3);
+}
+
+/* Цвета для карликовых планет */
+.dwarf {
+    --planet-color: #bdbdbd;
+    --planet-color-dark: #9e9e9e;
+    --planet-bg: linear-gradient(135deg, #bdbdbd, #9e9e9e);
+    --planet-shadow: rgba(189, 189, 189, 0.3);
+}
