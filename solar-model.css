@@ -1,0 +1,394 @@
+/* solar-model.css */
+
+.solar-model-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, 
+        rgba(5, 10, 40, 0.95) 0%, 
+        rgba(15, 20, 60, 0.95) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.solar-model-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 204, 255, 0.4) 50%, 
+        transparent 100%);
+}
+
+.model-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.model-title {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: white;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.title-icon {
+    margin-right: 0.5rem;
+    font-size: 2.5rem;
+    vertical-align: middle;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.model-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.model-requirements {
+    background-color: rgba(255, 193, 7, 0.15);
+    border-left: 4px solid #ffc107;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: left;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.model-requirements p {
+    margin: 0;
+    color: #ffcc00;
+    font-size: 0.9rem;
+}
+
+.model-container {
+    width: 100%;
+    margin: 0 auto 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: #000;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.model-container:hover {
+    border-color: rgba(255, 204, 0, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.model-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 12px;
+}
+
+.solar-iframe {
+    display: block;
+    width: 100%;
+    height: 700px;
+    border: none;
+    position: relative;
+    z-index: 2;
+}
+
+.model-instructions {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--gradient-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.model-instructions h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.model-instructions ul {
+    padding-left: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.model-instructions li {
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.model-instructions li::marker {
+    color: #ffcc00;
+}
+
+.model-instructions strong {
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+.model-note {
+    font-style: italic;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.model-note::before {
+    content: 'ℹ️';
+    margin-right: 0.5rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 1200px) {
+    .model-container {
+        margin: 0 1rem 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .model-title {
+        font-size: 2.3rem;
+    }
+    
+    .solar-iframe {
+        height: 600px;
+    }
+    
+    .model-instructions {
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .solar-model-section {
+        padding: 4rem 0;
+    }
+    
+    .model-title {
+        font-size: 2rem;
+    }
+    
+    .title-icon {
+        font-size: 1.8rem;
+    }
+    
+    .model-subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .solar-iframe {
+        height: 500px;
+    }
+    
+    .model-instructions {
+        padding: 1.5rem;
+    }
+    
+    .model-instructions h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .solar-model-section {
+        padding: 3rem 0;
+    }
+    
+    .model-title {
+        font-size: 1.8rem;
+    }
+    
+    .model-subtitle {
+        font-size: 1rem;
+    }
+    
+    .solar-iframe {
+        height: 400px;
+    }
+    
+    .model-container {
+        margin: 0 0.5rem 2rem;
+        border-radius: 8px;
+    }
+    
+    .model-instructions {
+        padding: 1.25rem;
+    }
+    
+    .model-instructions li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Загрузочное состояние */
+.model-loading {
+    position: relative;
+    min-height: 700px;
+    background: linear-gradient(90deg, #000 25%, #111 50%, #000 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Улучшенная версия для лучшей производительности */
+.solar-iframe {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+
+/* Добавьте в конец файла solar-model.css */
+
+/* Стили для кнопки полноэкранного режима */
+.fullscreen-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+.fullscreen-btn:hover {
+    background: rgba(255, 204, 0, 0.9);
+    color: #000;
+    border-color: #ffcc00;
+    transform: translateY(-2px);
+}
+
+.fullscreen-icon {
+    font-size: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.fullscreen-btn:hover .fullscreen-icon {
+    transform: scale(1.1);
+}
+
+/* Адаптивность для кнопки */
+@media (max-width: 768px) {
+    .fullscreen-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .fullscreen-text {
+        display: none;
+    }
+    
+    .fullscreen-btn:hover .fullscreen-text {
+        display: inline;
+        position: absolute;
+        right: 100%;
+        margin-right: 10px;
+        white-space: nowrap;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Стили для полноэкранного режима */
+.model-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-container:fullscreen .solar-iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.model-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-container:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-container:-ms-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

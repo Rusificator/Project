@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="feedbackModal.css">
     <link rel="stylesheet" href="footerForm.css">
     <link rel="stylesheet" href="weight-calculator.css">
+    <link rel="stylesheet" href="solar-model.css">
 </head>
 <body>
     <!-- Шапка сайта -->
@@ -44,7 +45,7 @@
                                 </li>
                             
                                 <li>
-                                    <a href="#" class="dropdown-link">
+                                    <a href="#solar-model" class="dropdown-link">
                                         <span class="dropdown-icon">🌐</span>
                                         3D Модель Солнечной системы
                                     </a>
@@ -350,6 +351,70 @@
 
 
 
+
+
+        <!-- Секция 3D модели Солнечной системы -->
+<section class="solar-model-section" id="solar-model">
+    <div class="container">
+        <div class="model-header">
+            <h2 class="model-title">
+                <span class="title-icon">🪐</span>
+                Интерактивная модель Солнечной системы
+            </h2>
+            <p class="model-subtitle">
+                Исследуйте планеты, их орбиты и ночное небо в реальном времени с помощью 
+                модели <strong>Solar System Scope</strong>. Меняйте масштаб, включайте движение планет и изучайте космические объекты.
+            </p>
+            <div class="model-requirements">
+                <p>⚠️ <strong>Для работы модели требуется:</strong> браузер на компьютере (Chrome, Firefox, Edge) с поддержкой <strong>WebGL</strong>. На мобильных устройствах модель может не работать.</p>
+            </div>
+        </div>
+
+        <div class="model-container">
+            <!-- Официальный код для встраивания модели -->
+            <iframe
+                src="https://www.solarsystemscope.com/iframe"
+                title="Интерактивная 3D модель Солнечной системы"
+                class="solar-iframe"
+                width="100%"
+                height="700"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer"
+            ></iframe>
+        </div>
+
+        <div class="model-instructions">
+            <h3>💡 Как пользоваться?</h3>
+            <ul>
+                <li><strong>Панель управления справа:</strong> выбор языка, масштаба, включение/выключение звука.</li>
+                <li><strong>Панель слева:</strong> выбор точки обзора (например, с Земли или Солнца) и настройки отображения орбит.</li>
+                <li><strong>Панель внизу:</strong> управление временем — запуск движения планет с разной скоростью.</li>
+                <li>Используйте <strong>колесико мыши</strong> для приближения и <strong>перетаскивание</strong> для вращения обзора.</li>
+            </ul>
+            <p class="model-note">Особенность: модель отображает положение планет на основе актуальных данных NASA.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Секция калькулятора веса -->
 <section class="weight-calculator-section" id="calculator">
     <div class="container">
@@ -536,5 +601,6 @@
     <script src="feedbackForm.js"></script>
     <script src="footerForm.js"></script>
     <script src="weight-calculator.js"></script>
+   <script src="solar-model.js"></script>
 </body>
 </html>
