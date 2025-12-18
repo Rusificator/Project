@@ -1,4 +1,4 @@
-// Данные для выпадающего меню
+
 const dropdownData = [
     {
         text: 'Калькулятор веса на планетах',
@@ -12,7 +12,7 @@ const dropdownData = [
     }
 ];
 
-// Класс для управления навигацией
+
 class Navigation {
     constructor() {
         this.mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -33,14 +33,14 @@ class Navigation {
         this.initOutsideClickHandlers();
     }
     
-    // Мобильное меню
+    
     initMobileMenu() {
         if (this.mobileMenuBtn && this.nav) {
             this.mobileMenuBtn.addEventListener('click', () => {
                 this.toggleMobileMenu();
             });
             
-            // Закрытие меню при клике на ссылку
+            
             const navLinks = document.querySelectorAll('.nav-link, .dropdown-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -62,27 +62,27 @@ class Navigation {
         document.body.style.overflow = '';
     }
     
-    // Модальное окно
+    
     initModal() {
         if (this.openFeedbackBtn && this.modalCloseBtn && this.modal) {
-            // Открытие модального окна
+            
             this.openFeedbackBtn.addEventListener('click', () => {
                 this.openModal();
             });
             
-            // Закрытие по кнопке
+            
             this.modalCloseBtn.addEventListener('click', () => {
                 this.closeModal();
             });
             
-            // Закрытие по клику вне окна
+            
             this.modal.addEventListener('click', (e) => {
                 if (e.target === this.modal) {
                     this.closeModal();
                 }
             });
             
-            // Закрытие по клавише Escape
+            
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && this.modal.classList.contains('active')) {
                     this.closeModal();
@@ -102,16 +102,16 @@ class Navigation {
         document.body.style.overflow = '';
     }
     
-    // Выпадающее меню
+    
     initDropdownMenu() {
         if (this.dropdown) {
             const dropdownToggle = this.dropdown.querySelector('.dropdown-toggle');
             const dropdownMenu = this.dropdown.querySelector('.dropdown-menu');
             
-            // Очистка меню перед добавлением элементов (на случай дублирования)
+            
             dropdownMenu.innerHTML = '';
             
-            // Создание элементов выпадающего меню
+           
             dropdownData.forEach(item => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
@@ -127,7 +127,7 @@ class Navigation {
                 dropdownMenu.appendChild(li);
             });
             
-            // Открытие/закрытие на десктопе
+            
             dropdownToggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.stopPropagation();
@@ -136,19 +136,19 @@ class Navigation {
                 }
             });
             
-            // Закрытие при клике вне меню
+            
             document.addEventListener('click', (e) => {
                 if (!this.dropdown.contains(e.target)) {
                     dropdownMenu.style.maxHeight = null;
                 }
             });
             
-            // Обработка для мобильных устройств
+            
             if (window.innerWidth <= 768) {
                 dropdownMenu.style.maxHeight = null;
             }
             
-            // Адаптация при изменении размера окна
+            
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 768) {
                     dropdownMenu.style.maxHeight = null;
@@ -159,7 +159,7 @@ class Navigation {
         }
     }
     
-    // Плавная прокрутка
+    
     initSmoothScroll() {
         const navLinks = document.querySelectorAll('a[href^="#"]');
         
@@ -167,10 +167,10 @@ class Navigation {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 
-                // Пропускаем якорь "#"
+                
                 if (href === '#') return;
                 
-                // Пропускаем ссылки на другие страницы
+                
                 if (href.includes('.html')) return;
                 
                 e.preventDefault();
@@ -184,17 +184,17 @@ class Navigation {
                         behavior: 'smooth'
                     });
                     
-                    // Обновление активной ссылки
+                    
                     this.updateActiveLink(link);
                 }
             });
         });
         
-        // Обработка кнопки "Смотреть всю галерею"
+        
         const viewGalleryBtn = document.getElementById('viewGalleryBtn');
         if (viewGalleryBtn) {
             viewGalleryBtn.addEventListener('click', () => {
-                // В демо-версии просто скроллим к галерее
+                
                 const gallerySection = document.querySelector('.auto-gallery-section');
                 if (gallerySection) {
                     window.scrollTo({
@@ -207,19 +207,19 @@ class Navigation {
     }
     
     updateActiveLink(clickedLink) {
-        // Удаляем активный класс у всех ссылок
+        
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
         
-        // Добавляем активный класс к нажатой ссылке
+        
         clickedLink.classList.add('active');
     }
     
-    // Обработчики кликов вне элементов
+    
     initOutsideClickHandlers() {
-        // Закрытие мобильного меню при клике вне его
+        
         document.addEventListener('click', (e) => {
             if (this.nav && this.mobileMenuBtn) {
                 if (!this.nav.contains(e.target) && !this.mobileMenuBtn.contains(e.target) && this.nav.classList.contains('active')) {
@@ -230,7 +230,7 @@ class Navigation {
     }
 }
 
-// Инициализация навигации при загрузке DOM
+
 document.addEventListener('DOMContentLoaded', () => {
     window.navigation = new Navigation();
 });

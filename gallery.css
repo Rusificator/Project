@@ -1,6 +1,4 @@
-/* gallery.css */
 
-/* Стили для страницы галереи */
 .gallery-page {
     padding: 100px 0 3rem;
     min-height: 100vh;
@@ -8,7 +6,7 @@
     z-index: 2;
 }
 
-/* Заголовок страницы */
+
 .page-header {
     text-align: center;
     margin-bottom: 2.5rem;
@@ -94,7 +92,7 @@
     font-weight: 500;
 }
 
-/* Сетка галереи */
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -236,7 +234,7 @@
     font-size: 1.2rem;
 }
 
-/* Информационная секция */
+
 .info-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -284,7 +282,7 @@
     font-size: 0.95rem;
 }
 
-/* Модальное окно */
+
 .image-modal {
     position: fixed;
     top: 0;
@@ -525,7 +523,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Адаптивность */
+
 @media (max-width: 1200px) {
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -695,7 +693,7 @@
     }
 }
 
-/* Улучшенная футер для галереи */
+
 .footer-note {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;

@@ -1,4 +1,4 @@
-/* Стили для контактной формы в футере */
+
 .footer-form-section {
     position: relative;
     z-index: 1;
@@ -27,22 +27,22 @@
 .footer-contact-form {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem; /* Уменьшили отступы */
+    gap: 0.8rem; 
 }
 
 .footer-contact-form .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.3rem; /* Минимальный отступ */
+    margin-bottom: 0.3rem; 
 }
 
 .footer-contact-form .form-label {
-    display: none; /* Скрываем лейблы, используем плейсхолдеры */
+    display: none; 
 }
 
 .footer-contact-form .form-control {
     width: 100%;
-    padding: 10px 14px; /* Уменьшили паддинг */
+    padding: 10px 14px; 
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
@@ -77,7 +77,7 @@
 
 .footer-contact-form textarea.form-control {
     resize: vertical;
-    min-height: 80px; /* Уменьшили высоту */
+    min-height: 80px; 
     font-family: inherit;
     line-height: 1.5;
 }
@@ -90,7 +90,7 @@
     line-height: 1.2;
 }
 
-/* Чекбокс в форме футера */
+
 .footer-contact-form .checkbox-group {
     display: flex;
     align-items: flex-start;
@@ -156,7 +156,7 @@
     font-weight: bold;
 }
 
-/* Кнопка отправки в футере */
+
 .footer-contact-form .submit-btn {
     background: linear-gradient(45deg, #0066ff, #00ccff);
     border: none;
@@ -188,7 +188,7 @@
     transform: none;
 }
 
-/* Сообщения в футере */
+
 .footer-contact-form .message {
     padding: 8px 12px;
     border-radius: 8px;
@@ -217,7 +217,7 @@
     border: 1px solid rgba(0, 102, 255, 0.3);
 }
 
-/* Спиннер загрузки */
+
 .footer-contact-form .loading-spinner {
     display: inline-block;
     width: 16px;
@@ -228,7 +228,7 @@
     animation: spin 1s ease-in-out infinite;
 }
 
-/* Адаптивность для формы в футере */
+
 @media (max-width: 992px) {
     .footer-form-section {
         max-width: 100%;

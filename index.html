@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="solar-model.css">
 </head>
 <body>
-    <!-- Шапка сайта -->
+    
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -30,7 +30,7 @@
                         <li><a href="missions.html" class="nav-link">Миссии</a></li>
                         <li><a href="#gallery" class="nav-link">Галерея</a></li>
                         
-                        <!-- Выпадающее меню -->
+                        
                         <li class="nav-item dropdown">
                             <button class="nav-link dropdown-toggle">
                                 Разное
@@ -61,7 +61,7 @@
                     </ul>
                 </nav>
                 
-                <!-- Кнопка мобильного меню -->
+                
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">
                     <span></span>
                     <span></span>
@@ -71,7 +71,7 @@
         </div>
     </header>
 
-    <!-- Модальное окно обратной связи -->
+    
 <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal-content">
         <div class="modal-header">
@@ -141,7 +141,7 @@
                     <div class="error-message" id="agreeError"></div>
                 </div>
 
-                <!-- Сообщения об успехе/ошибке -->
+                
                 <div id="formMessage" class="message" style="display: none;"></div>
 
                 <div class="form-buttons">
@@ -162,7 +162,7 @@
                     </button>
                 </div>
 
-                <!-- Скрытые поля для Formcarry -->
+                
                 <input type="hidden" name="_gotcha" style="display:none !important">
                 <input type="hidden" name="_subject" value="Новое сообщение с сайта Космический исследователь">
                 <input type="hidden" name="_language" value="ru">
@@ -171,9 +171,9 @@
     </div>
 </div>
 
-    <!-- Основной контент -->
+    
     <div class="home-page">
-        <!-- Видео фон -->
+        
         <div class="video-background">
             <video 
                 autoplay 
@@ -188,7 +188,7 @@
             <div class="video-overlay"></div>
         </div>
         
-        <!-- Hero секция -->
+        
         <div class="hero-content">
             <div class="container">
                 <h1 class="hero-title">
@@ -205,7 +205,7 @@
             </div>
         </div>
 
-        <!-- Секция возможностей -->
+        
         <section class="features-section">
             <div class="container">
                 <h2>Что вас ждет?</h2>
@@ -229,7 +229,7 @@
             </div>
         </section>
 
-        <!-- Секция таймлайна -->
+        
         <section class="timeline-section" id="timelineSection">
             <div class="container">
                 <div class="timeline-header">
@@ -241,7 +241,7 @@
                 
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
-                    <!-- Таймлайн события будут добавлены через JavaScript -->
+                    
                 </div>
                 
                 <div class="timeline-note">
@@ -250,7 +250,7 @@
             </div>
         </section>
 
-        <!-- Секция статистики -->
+        
         <section class="statistics-section" id="statisticsSection">
             <div class="container">
                 <div class="statistics-header">
@@ -317,7 +317,7 @@
             </div>
         </section>
 
-        <!-- Секция галереи -->
+        
         <section class="auto-gallery-section" id="gallery">
             <div class="container">
                 <div class="gallery-header">
@@ -329,7 +329,7 @@
                 
                 <div class="gallery-container">
                     <div class="gallery-track" id="galleryTrack">
-                        <!-- Изображения галереи будут добавлены через JavaScript -->
+                        
                     </div>
                 </div>
 
@@ -352,7 +352,7 @@
 
 
 
-        <!-- Секция 3D модели Солнечной системы -->
+        
 <section class="solar-model-section" id="solar-model">
     <div class="container">
         <div class="model-header">
@@ -370,7 +370,7 @@
         </div>
 
         <div class="model-container">
-            <!-- Официальный код для встраивания модели -->
+            
             <iframe
                 src="https://www.solarsystemscope.com/iframe"
                 title="Интерактивная 3D модель Солнечной системы"
@@ -414,7 +414,7 @@
 
 
 
-<!-- Секция калькулятора веса -->
+
 <section class="weight-calculator-section" id="calculator">
     <div class="container">
         <div class="calculator-content">
@@ -425,7 +425,7 @@
                 </p>
             </div>
 
-            <!-- Панель ввода -->
+            
             <div class="input-panel">
                 <div class="weight-input-group">
                     <label for="earth-weight" class="input-label">
@@ -453,16 +453,16 @@
                 </div>
             </div>
 
-            <!-- Результаты -->
+            
             <div class="results-section" id="results-section" style="display: none;">
                 <h3 class="results-title">Ваш вес на других небесных телах:</h3>
                 
                 <div class="planets-grid" id="planets-grid">
-                    <!-- Планеты будут добавлены через JavaScript -->
+                    
                 </div>
             </div>
 
-            <!-- Подсказка при пустом вводе -->
+            
             <div class="empty-state" id="empty-state">
                 <div class="empty-icon">⚖️</div>
                 <h3>Введите ваш вес</h3>
@@ -488,7 +488,7 @@
 
     </div>
 
-   <!-- Футер -->
+   
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -574,7 +574,7 @@
                         <span id="footerSubmitText">Отправить</span>
                         <span id="footerLoadingSpinner" class="loading-spinner" style="display: none;"></span>
                     </button>
-                    <!-- Скрытые поля для Formcarry -->
+                   
                     <input type="hidden" name="_gotcha" style="display:none !important">
                     <input type="hidden" name="_subject" value="Сообщение из футера Космический исследователь">
                     <input type="hidden" name="_language" value="ru">
@@ -587,7 +587,7 @@
     </div>
 </footer>
 
-    <!-- Подключаем JavaScript файлы -->
+    
     <script src="script.js"></script>
     <script src="navigation.js"></script>
     <script src="feedbackForm.js"></script>

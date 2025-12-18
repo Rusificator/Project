@@ -1,4 +1,4 @@
-// solar-model.js - упрощенная версия
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const modelContainer = document.querySelector('.model-container');
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!modelContainer || !solarIframe) return;
     
-    // Создаем кнопку для полноэкранного режима
+    
     const fullscreenBtn = document.createElement('button');
     fullscreenBtn.className = 'fullscreen-btn';
     fullscreenBtn.setAttribute('aria-label', 'Развернуть на полный экран');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="fullscreen-text">Полный экран</span>
     `;
     
-    // Стили для кнопки
+    
     fullscreenBtn.style.cssText = `
         position: absolute;
         bottom: 20px;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         font-family: inherit;
     `;
     
-    // Добавляем hover эффект
+    
     fullscreenBtn.addEventListener('mouseenter', function() {
         this.style.background = 'rgba(255, 204, 0, 0.9)';
         this.style.color = '#000';
@@ -49,20 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
     });
     
-    // Обработчик клика для полноэкранного режима
+   
     fullscreenBtn.addEventListener('click', function() {
         if (modelContainer.requestFullscreen) {
             modelContainer.requestFullscreen();
-        } else if (modelContainer.mozRequestFullScreen) { // Firefox
+        } else if (modelContainer.mozRequestFullScreen) { 
             modelContainer.mozRequestFullScreen();
-        } else if (modelContainer.webkitRequestFullscreen) { // Chrome, Safari и Opera
+        } else if (modelContainer.webkitRequestFullscreen) { 
             modelContainer.webkitRequestFullscreen();
-        } else if (modelContainer.msRequestFullscreen) { // IE/Edge
+        } else if (modelContainer.msRequestFullscreen) { 
             modelContainer.msRequestFullscreen();
         }
     });
     
-    // Изменяем кнопку при переходе в полноэкранный режим
+    
     document.addEventListener('fullscreenchange', updateFullscreenButton);
     document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
     document.addEventListener('mozfullscreenchange', updateFullscreenButton);
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Добавляем кнопку в контейнер
+    
     modelContainer.style.position = 'relative';
     modelContainer.appendChild(fullscreenBtn);
     
-    // Выход из полноэкранного режима по нажатию Escape
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const isFullscreen = document.fullscreenElement || 

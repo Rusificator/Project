@@ -1,4 +1,4 @@
-/* Стили для футера */
+
 .footer {
     background: linear-gradient(135deg, #0a0c24, #141946);
     padding: 3rem 0 1.5rem;
@@ -128,7 +128,7 @@
     }
 }
 
-/* Адаптивность футера */
+
 @media (max-width: 768px) {
     .footer {
         padding: 2.5rem 0 1.5rem;

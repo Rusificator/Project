@@ -1,4 +1,4 @@
-/* Стили для шапки */
+
 .header {
     background: rgba(26, 26, 46, 0.95);
     backdrop-filter: blur(10px);
@@ -51,7 +51,7 @@
     letter-spacing: 0.5px;
 }
 
-/* Навигация */
+
 .nav {
     display: flex;
 }
@@ -185,7 +185,7 @@
     text-align: center;
 }
 
-/* Кнопка "Связь с нами" */
+
 .contact-btn {
     background: linear-gradient(45deg, #0066ff, #00ccff);
     color: white;
@@ -204,7 +204,7 @@
     box-shadow: 0 8px 20px rgba(0, 102, 255, 0.4);
 }
 
-/* Кнопка мобильного меню */
+
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -372,7 +372,7 @@
     cursor: not-allowed;
 }
 
-/* Адаптивность для мобильных устройств */
+
 @media (max-width: 992px) {
     .logo-text {
         font-size: 1.2rem;

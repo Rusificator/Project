@@ -1,11 +1,11 @@
-// missions.js
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы DOM
+    
     const missionsGrid = document.getElementById('missionsGrid');
     const filterButtons = document.querySelectorAll('.filter-btn');
     
-    // Данные о космических миссиях
+    
     const missionsData = [
     {
         id: 0,
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 ];
     
-    // Функция для получения русского названия типа миссии
+    
     function getMissionTypeLabel(type) {
         const types = {
             'planetary': 'Планетарная',
@@ -178,11 +178,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return types[type] || type;
     }
     
-    // Функция создания карточки миссии
+    
    function createMissionCard(mission) {
     const card = document.createElement('div');
     
-    // Добавляем специальный класс для миссии Гагарина
+    
     const cardClass = mission.special ? 'mission-card gagarin-special' : `mission-card ${mission.type}`;
     card.className = cardClass;
     card.dataset.type = mission.type;
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
         </div>
     `;
-        // Добавляем обработчик для кнопки "Подробнее"
+        
         const detailsBtn = card.querySelector('.details-btn');
         detailsBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
     
-    // Функция фильтрации миссий
+    
     function filterMissions(filter) {
         const allCards = document.querySelectorAll('.mission-card');
         
@@ -246,9 +246,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Функция показа деталей миссии (заглушка)
+    
     function showMissionDetails(mission) {
-        // Создаем модальное окно
+        
         const modal = document.createElement('div');
         modal.className = 'mission-modal';
         modal.style.cssText = `
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(modal);
         
-        // Закрытие модального окна
+        // Закрытие 
         modal.querySelector('.close-modal').addEventListener('click', () => {
             modal.style.animation = 'fadeOut 0.3s ease';
             modal.querySelector('.modal-content').style.animation = 'slideDown 0.3s ease';
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
         
-        // Закрытие по клику на фон
+        
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.animation = 'fadeOut 0.3s ease';
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Добавляем стили для анимации закрытия
+        
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeOut {
@@ -425,24 +425,24 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.appendChild(style);
     }
     
-    // Заполняем сетку миссий
+   
     missionsData.forEach(mission => {
         missionsGrid.appendChild(createMissionCard(mission));
     });
     
-    // Обработчики для кнопок фильтрации
+    
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Убираем активный класс у всех кнопок
+           
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Добавляем активный класс нажатой кнопке
+            
             button.classList.add('active');
-            // Фильтруем миссии
+            
             filterMissions(button.dataset.filter);
         });
     });
     
-    // Предзагрузка изображений
+    
     function preloadImages() {
         missionsData.forEach(mission => {
             const img = new Image();
@@ -450,6 +450,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Запускаем предзагрузку после загрузки страницы
+    
     setTimeout(preloadImages, 1000);
 });

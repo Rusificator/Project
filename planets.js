@@ -1,10 +1,10 @@
-// planets.js
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const planetsGrid = document.getElementById('planetsGrid');
     const dwarfPlanetsGrid = document.querySelector('.dwarf-planets-grid');
     
-    // Данные о планетах
+    
     const planetsData = [
         {
             id: 'mercury',
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    // Данные о карликовых планетах
+    
     const dwarfPlanetsData = [
         {
             name: 'Плутон',
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
     
-    // Функция создания карточки планеты
+    
     function createPlanetCard(planet) {
         const card = document.createElement('div');
         card.className = `planet-card ${planet.id}`;
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
     
-    // Функция создания карточки карликовой планеты
+    
     function createDwarfPlanetCard(dwarfPlanet) {
         const card = document.createElement('div');
         card.className = 'dwarf-planet-card dwarf';
@@ -197,32 +197,32 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
     
-    // Заполняем сетку планет
+    
     planetsData.forEach(planet => {
         planetsGrid.appendChild(createPlanetCard(planet));
     });
     
-    // Заполняем сетку карликовых планет
+    
     dwarfPlanetsData.forEach(dwarfPlanet => {
         dwarfPlanetsGrid.appendChild(createDwarfPlanetCard(dwarfPlanet));
     });
     
-    // Обработчики для кнопок "Изучить"
+    
     document.querySelectorAll('.explore-btn').forEach(button => {
         button.addEventListener('click', function() {
             const planetId = this.dataset.planet;
             const planet = planetsData.find(p => p.id === planetId);
             
             if (planet) {
-                // Показываем заглушку
+                
                 showPlanetModal(planet);
             }
         });
     });
     
-    // Функция показа модального окна с информацией о планете (заглушка)
+    
     function showPlanetModal(planet) {
-        // Создаем модальное окно
+        
         const modal = document.createElement('div');
         modal.className = 'planet-modal';
         modal.style.cssText = `
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(modal);
         
-        // Закрытие модального окна
+        
         modal.querySelector('.close-modal').addEventListener('click', () => {
             modal.style.animation = 'fadeOut 0.3s ease';
             modal.querySelector('.modal-content').style.animation = 'slideDown 0.3s ease';
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
         
-        // Закрытие по клику на фон
+       
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.animation = 'fadeOut 0.3s ease';
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Добавляем стили для анимации закрытия
+        
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeOut {

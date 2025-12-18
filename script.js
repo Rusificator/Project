@@ -102,25 +102,25 @@ const galleryImages = [
     }
 ];
 
-// Инициализация при загрузке страницы
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация таймлайна
+    
     initTimeline();
     
-    // Инициализация галереи
+    
     initGallery();
     
-    // Настройка Intersection Observer для анимаций
+    
     setupObservers();
     
-    // Обработка наведения на элементы статистики
+    
     setupStatItemsHover();
     
-    // Настройка кнопки "Отправиться в путешествие"
+    
     setupJourneyButton();
 });
 
-// Инициализация таймлайна
+
 function initTimeline() {
     const timelineContainer = document.querySelector('.timeline-container');
     
@@ -147,12 +147,12 @@ function initTimeline() {
     }
 }
 
-// Инициализация галереи
+
 function initGallery() {
     const galleryTrack = document.getElementById('galleryTrack');
     
     if (galleryTrack) {
-        // Продублируем изображения для бесшовной анимации
+        
         const allImages = [...galleryImages, ...galleryImages];
         
         allImages.forEach((image, index) => {
@@ -185,7 +185,7 @@ function initGallery() {
     }
 }
 
-// Настройка кнопки "Отправиться в путешествие"
+
 function setupJourneyButton() {
     const startJourneyBtn = document.getElementById('startJourneyBtn');
     
@@ -210,19 +210,18 @@ function setupJourneyButton() {
     }
 }
 
-// Открытие деталей изображения
+
 function openImageDetail(imageId) {
-    // В реальном проекте здесь была бы навигация на страницу деталей изображения
-    // Для демо просто покажем сообщение
+    
     const image = galleryImages.find(img => img.id === imageId);
     if (image) {
         alert(`Открывается детальная информация об изображении: ${image.title}`);
     }
 }
 
-// Настройка Intersection Observer для анимаций
+
 function setupObservers() {
-    // Observer для статистики
+    
     const statisticsSection = document.getElementById('statisticsSection');
     const statNumbers = document.querySelectorAll('.stat-number');
     
@@ -231,7 +230,7 @@ function setupObservers() {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Запуск анимации чисел
+                        
                         animateNumbers(statNumbers);
                         statsObserver.unobserve(entry.target);
                     }
@@ -246,7 +245,7 @@ function setupObservers() {
         statsObserver.observe(statisticsSection);
     }
     
-    // Observer для таймлайна
+    
     const timelineSection = document.getElementById('timelineSection');
     const timelineItems = document.querySelectorAll('.timeline-item');
     
@@ -255,7 +254,7 @@ function setupObservers() {
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Показ элементов таймлайна с задержкой
+                        
                         timelineItems.forEach((item, index) => {
                             setTimeout(() => {
                                 item.classList.add('visible');
@@ -275,7 +274,7 @@ function setupObservers() {
     }
 }
 
-// Анимация чисел
+
 function animateNumbers(numberElements) {
     numberElements.forEach(element => {
         const target = parseInt(element.getAttribute('data-target'));
@@ -294,7 +293,7 @@ function animateNumbers(numberElements) {
     });
 }
 
-// Обработка наведения на элементы статистики
+
 function setupStatItemsHover() {
     const statItems = document.querySelectorAll('.stat-item');
     

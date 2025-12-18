@@ -1,7 +1,7 @@
-// gallery.js
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы DOM
+    
     const galleryGrid = document.getElementById('galleryGrid');
     const imageModal = document.getElementById('imageModal');
     const modalOverlay = document.getElementById('modalOverlay');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
-    // Данные для галереи с расширенной информацией
+    
     const galleryImages = [
         { 
             id: 1, 
@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentImageIndex = 0;
     
-    // Устанавливаем общее количество изображений
+   
     totalImages.textContent = galleryImages.length;
     
-    // Функция создания карточки галереи
+    
     function createGalleryCard(image) {
         const card = document.createElement('div');
         card.className = 'gallery-card';
@@ -120,33 +120,33 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Добавляем обработчик клика на всю карточку
+        
         card.addEventListener('click', () => {
             openModal(image.id - 1);
         });
         
-        // Обработчик для кнопки просмотра
+        
         const viewBtn = card.querySelector('.view-btn');
         viewBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Предотвращаем всплытие события
+            e.stopPropagation(); 
             openModal(image.id - 1);
         });
         
         return card;
     }
     
-    // Функция открытия модального окна
+    
     function openModal(index) {
         currentImageIndex = index;
         updateModal();
         imageModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+        document.body.style.overflow = 'hidden'; 
         
-        // Показываем загрузчик
+        
         modalImage.classList.remove('loaded');
         imageLoader.style.display = 'flex';
         
-        // Загружаем изображение
+       
         const img = new Image();
         img.src = galleryImages[currentImageIndex].src;
         img.onload = () => {
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         img.onerror = () => {
-            // Если изображение не загрузилось, показываем заглушку
+            // Если изображение не загрузилось, заглушку
             modalImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%231a1a2e"/><text x="50%" y="50%" font-family="Arial" font-size="16" fill="white" text-anchor="middle" dy=".3em">Изображение не загрузилось</text></svg>';
             modalImage.alt = 'Изображение не загрузилось';
             modalImage.classList.add('loaded');
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
     
-    // Функция обновления содержимого модального окна
+    
     function updateModal() {
         const image = galleryImages[currentImageIndex];
         
@@ -175,18 +175,18 @@ document.addEventListener('DOMContentLoaded', function() {
         modalCategory.textContent = `${image.category} • ${image.year}`;
         currentImage.textContent = currentImageIndex + 1;
         
-        // Обновляем состояние кнопок навигации
+       
         prevBtn.disabled = currentImageIndex === 0;
         nextBtn.disabled = currentImageIndex === galleryImages.length - 1;
     }
     
-    // Функция закрытия модального окна
+    
     function closeModal() {
         imageModal.classList.remove('active');
-        document.body.style.overflow = ''; // Возвращаем скролл
+        document.body.style.overflow = ''; 
     }
     
-    // Функция переключения на следующее изображение
+    
     function nextImage() {
         if (currentImageIndex < galleryImages.length - 1) {
             currentImageIndex++;
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Функция переключения на предыдущее изображение
+    
     function prevImage() {
         if (currentImageIndex > 0) {
             currentImageIndex--;
@@ -202,24 +202,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Заполняем сетку галереи
+    
     galleryImages.forEach(image => {
         galleryGrid.appendChild(createGalleryCard(image));
     });
     
-    // Обработчики событий
+    
     modalOverlay.addEventListener('click', closeModal);
     modalClose.addEventListener('click', closeModal);
     prevBtn.addEventListener('click', prevImage);
     nextBtn.addEventListener('click', nextImage);
     
-    // Закрытие модального окна по нажатию Escape
+   
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && imageModal.classList.contains('active')) {
             closeModal();
         }
         
-        // Навигация стрелками
+        
         if (imageModal.classList.contains('active')) {
             if (e.key === 'ArrowLeft') {
                 prevImage();
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Предзагрузка изображений для лучшей производительности
+    
     function preloadImages() {
         galleryImages.forEach(image => {
             const img = new Image();
@@ -237,6 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Запускаем предзагрузку после загрузки страницы
+    
     setTimeout(preloadImages, 1000);
 });

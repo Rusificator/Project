@@ -1,6 +1,4 @@
-/* missions.css */
 
-/* Стили для страницы миссий */
 .missions-page {
     padding: 100px 0 3rem;
     min-height: 100vh;
@@ -8,7 +6,7 @@
     z-index: 2;
 }
 
-/* Заголовок страницы */
+
 .page-header {
     text-align: center;
     margin-bottom: 2.5rem;
@@ -94,7 +92,7 @@
     font-weight: 500;
 }
 
-/* Фильтры миссий */
+
 .mission-filters {
     margin-bottom: 2.5rem;
     padding: 1.5rem;
@@ -346,7 +344,6 @@
     font-size: 0.9rem;
 }
 
-/* Информационная секция */
 .info-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -394,7 +391,7 @@
     font-size: 0.95rem;
 }
 
-/* Цвета для типов миссий */
+
 .mission-card.planetary {
     --mission-color: #ff6b6b;
     --mission-color-dark: #f44336;
@@ -419,7 +416,7 @@
     --mission-shadow: rgba(255, 167, 38, 0.2);
 }
 
-/* Адаптивность */
+
 @media (max-width: 1200px) {
     .missions-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -562,7 +559,7 @@
     }
 }
 
-/* Улучшенная футер для страницы миссий */
+
 .footer-note {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
@@ -571,7 +568,7 @@
 }
 
 
-/* Дополнительные стили для особой карточки Гагарина */
+/* Дополнительные стили для особой карточки */
 .mission-card.gagarin-special {
     --mission-color: #FFD700;
     --mission-color-dark: #D4AF37;
@@ -623,14 +620,14 @@
     font-weight: 700;
 }
 
-/* Полная ширина для дополнительного факта */
+
 .stat-item.full-width {
     grid-column: 1 / -1;
     background: rgba(255, 215, 0, 0.05);
     border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-/* Анимация пульсации для особой карточки */
+/* Анимация пульсации  */
 @keyframes pulse-gold {
     0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
     70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
@@ -640,7 +637,7 @@
     animation: pulse-gold 2s infinite;
 }
 
-/* Адаптивность для особой карточки */
+
 @media (max-width: 768px) {
     .mission-card.gagarin-special::before {
         font-size: 0.6rem;

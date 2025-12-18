@@ -1,4 +1,4 @@
-/* CSS переменные и базовые стили */
+
 :root {
     --primary-color: #0066ff;
     --secondary-color: #00ccff;
@@ -32,7 +32,7 @@ body {
     padding: 0 20px;
 }
 
-/* Видео фон */
+
 .video-background {
     position: fixed;
     top: 0;
@@ -62,7 +62,7 @@ body {
     );
 }
 
-/* Hero секция */
+
 .hero-content {
     min-height: 100vh;
     display: flex;
@@ -119,7 +119,7 @@ body {
     font-size: 1.5rem;
 }
 
-/* Секция возможностей */
+
 .features-section {
     padding: 5rem 0;
     background: rgba(26, 26, 46, 0.7);
@@ -169,7 +169,7 @@ body {
     line-height: 1.6;
 }
 
-/* Секция таймлайна */
+
 .timeline-section {
     padding: 5rem 0;
     background: linear-gradient(135deg, 
@@ -380,7 +380,7 @@ body {
     margin: 0;
 }
 
-/* Секция статистики */
+
 .statistics-section {
     padding: 5rem 0;
     background: linear-gradient(135deg, 
@@ -556,7 +556,7 @@ body {
     line-height: 1.5;
 }
 
-/* Секция галереи */
+
 .auto-gallery-section {
     padding: 4rem 0;
     background: linear-gradient(135deg, 
@@ -737,7 +737,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* Футер */
+
 footer {
     padding: 3rem 0;
     background: rgba(10, 10, 20, 0.95);
@@ -750,7 +750,7 @@ footer p {
     margin-bottom: 1rem;
 }
 
-/* Адаптивность */
+
 @media (max-width: 1200px) {
     .statistics-grid,
     .features-grid {

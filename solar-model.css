@@ -1,4 +1,4 @@
-/* solar-model.css */
+
 
 .solar-model-section {
     padding: 5rem 0;
@@ -174,7 +174,7 @@
     margin-right: 0.5rem;
 }
 
-/* Адаптивность для мобильных устройств */
+
 @media (max-width: 1200px) {
     .model-container {
         margin: 0 1rem 3rem;
@@ -257,7 +257,7 @@
     }
 }
 
-/* Загрузочное состояние */
+
 .model-loading {
     position: relative;
     min-height: 700px;
@@ -277,16 +277,14 @@
     100% { background-position: -200% 0; }
 }
 
-/* Улучшенная версия для лучшей производительности */
+
 .solar-iframe {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
 
 
-/* Добавьте в конец файла solar-model.css */
 
-/* Стили для кнопки полноэкранного режима */
 .fullscreen-btn {
     position: absolute;
     bottom: 20px;
@@ -324,7 +322,6 @@
     transform: scale(1.1);
 }
 
-/* Адаптивность для кнопки */
 @media (max-width: 768px) {
     .fullscreen-btn {
         bottom: 15px;
@@ -350,7 +347,7 @@
     }
 }
 
-/* Стили для полноэкранного режима */
+
 .model-container:fullscreen {
     width: 100vw;
     height: 100vh;

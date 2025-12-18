@@ -1,9 +1,8 @@
-// Конфигурация Formcarry для формы в футере
-const FOOTER_FORMCARRY_ENDPOINT = 'https://formcarry.com/s/YOUR_FORM_ID_HERE';
-// Замените YOUR_FORM_ID_HERE на ваш реальный ID формы с formcarry.com
-// Можно использовать тот же endpoint, что и для модальной формы, или другой
 
-// Класс для управления формой в футере
+const FOOTER_FORMCARRY_ENDPOINT = 'https://formcarry.com/s/_na1c8kkBc4';
+
+
+
 class FooterContactForm {
     constructor() {
         this.form = document.getElementById('footerContactForm');
@@ -12,7 +11,7 @@ class FooterContactForm {
         this.loadingSpinner = document.getElementById('footerLoadingSpinner');
         this.formMessage = document.getElementById('footerFormMessage');
         
-        // Поля формы
+        
         this.fields = {
             fullName: document.getElementById('footerFullName'),
             phone: document.getElementById('footerPhone'),
@@ -21,7 +20,7 @@ class FooterContactForm {
             agree: document.getElementById('footerAgree')
         };
         
-        // Сообщения об ошибках
+        
         this.errorFields = {
             fullName: document.getElementById('footerFullNameError'),
             phone: document.getElementById('footerPhoneError'),
@@ -30,7 +29,7 @@ class FooterContactForm {
             agree: document.getElementById('footerAgreeError')
         };
         
-        // Состояние формы
+        
         this.isLoading = false;
         this.formData = this.getFormDataFromStorage();
         
@@ -38,20 +37,20 @@ class FooterContactForm {
     }
     
     init() {
-        // Восстановление данных из LocalStorage
+        
         this.restoreFormData();
         
-        // Обработчики событий
+        
         this.setupEventListeners();
         
-        // Автосохранение при изменении полей
+        
         this.setupAutoSave();
         
-        // Настройка стилей чекбокса
+        
         this.setupCheckboxStyles();
     }
     
-    // Настройка стилей чекбокса
+    
     setupCheckboxStyles() {
         const checkboxGroup = this.form.querySelector('.checkbox-group');
         const checkbox = this.fields.agree;
@@ -66,7 +65,7 @@ class FooterContactForm {
         });
     }
     
-    // Получение данных формы из LocalStorage
+    
     getFormDataFromStorage() {
         try {
             const savedData = localStorage.getItem('footerContactFormData');
@@ -93,7 +92,7 @@ class FooterContactForm {
         };
     }
     
-    // Восстановление данных в форму
+    
     restoreFormData() {
         if (this.formData) {
             this.fields.fullName.value = this.formData.fullName || '';
@@ -102,14 +101,14 @@ class FooterContactForm {
             this.fields.message.value = this.formData.message || '';
             this.fields.agree.checked = this.formData.agree || false;
             
-            // Обновляем стиль чекбокса
+            
             if (this.fields.agree.checked) {
                 this.form.querySelector('.checkbox-group')?.classList.add('success');
             }
         }
     }
     
-    // Настройка автосохранения
+    
     setupAutoSave() {
         Object.keys(this.fields).forEach(fieldName => {
             const field = this.fields[fieldName];
@@ -128,7 +127,7 @@ class FooterContactForm {
         });
     }
     
-    // Сохранение данных формы
+    
     saveFormData() {
         const formData = {
             fullName: this.fields.fullName.value.trim(),
@@ -145,18 +144,18 @@ class FooterContactForm {
         }
     }
     
-    // Настройка обработчиков событий
+    
     setupEventListeners() {
-        // Отправка формы
+        
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSubmit();
         });
         
-        // Валидация при потере фокуса
+        
         this.setupBlurValidation();
         
-        // Клик по чекбокс-группе
+        
         const checkboxGroup = this.form.querySelector('.checkbox-group');
         if (checkboxGroup) {
             checkboxGroup.addEventListener('click', (e) => {
@@ -168,7 +167,7 @@ class FooterContactForm {
         }
     }
     
-    // Валидация при потере фокуса
+    
     setupBlurValidation() {
         this.fields.fullName.addEventListener('blur', () => {
             this.validateFullName();
@@ -191,7 +190,7 @@ class FooterContactForm {
         });
     }
     
-    // Валидация полей
+    
     validateFullName() {
         const value = this.fields.fullName.value.trim();
         if (!value) {
@@ -214,21 +213,20 @@ class FooterContactForm {
             return false;
         }
         
-        // Упрощенная валидация телефона
-        // Минимум 5 цифр (для очень коротких номеров)
+        
         const phoneDigits = value.replace(/\D/g, '');
         if (phoneDigits.length < 5) {
             this.showFieldError('phone', 'Номер телефона слишком короткий');
             return false;
         }
         
-        // Максимум 15 цифр (международные номера)
+        
         if (phoneDigits.length > 15) {
             this.showFieldError('phone', 'Номер телефона слишком длинный');
             return false;
         }
         
-        // Проверка на наличие хотя бы одной цифры (базовая проверка)
+       
         if (!/\d/.test(value)) {
             this.showFieldError('phone', 'Номер телефона должен содержать цифры');
             return false;
@@ -284,7 +282,7 @@ class FooterContactForm {
         return true;
     }
     
-    // Общая валидация формы
+    
     validateForm() {
         const validations = [
             this.validateFullName(),
@@ -297,7 +295,7 @@ class FooterContactForm {
         return validations.every(v => v === true);
     }
     
-    // Показать ошибку поля
+    
     showFieldError(fieldName, message) {
         const errorElement = this.errorFields[fieldName];
         if (errorElement) {
@@ -309,7 +307,7 @@ class FooterContactForm {
         }
     }
     
-    // Очистить ошибку поля
+    
     clearFieldError(fieldName) {
         const errorElement = this.errorFields[fieldName];
         if (errorElement) {
@@ -317,7 +315,7 @@ class FooterContactForm {
             if (fieldName !== 'agree') {
                 this.fields[fieldName].classList.remove('error');
                 
-                // Добавляем класс success если поле заполнено правильно
+                
                 if (this.fields[fieldName].value.trim()) {
                     this.fields[fieldName].classList.add('success');
                 }
@@ -325,16 +323,16 @@ class FooterContactForm {
         }
     }
     
-    // Показать сообщение формы
+    
     showMessage(text, type = 'info') {
         this.formMessage.textContent = text;
         this.formMessage.className = `message ${type}`;
         this.formMessage.style.display = 'block';
         
-        // Прокручиваем к сообщению, если оно не видно
+        
         this.formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         
-        // Автоматическое скрытие сообщения об успехе
+        
         if (type === 'success') {
             setTimeout(() => {
                 this.formMessage.style.display = 'none';
@@ -342,41 +340,41 @@ class FooterContactForm {
         }
     }
     
-    // Скрыть сообщение формы
+    
     hideMessage() {
         this.formMessage.style.display = 'none';
     }
     
-    // Обработка отправки формы
+    
     async handleSubmit() {
-        // Валидация
+        
         if (!this.validateForm()) {
             this.showMessage('Пожалуйста, заполните все обязательные поля корректно', 'error');
             return;
         }
         
-        // Показать состояние загрузки
+        
         this.setLoadingState(true);
         this.hideMessage();
         
         try {
-            // Подготовка данных для отправки
+            
             const formData = new FormData();
             
-            // Добавляем данные формы
+            
             formData.append('fullName', this.fields.fullName.value.trim());
             formData.append('phone', this.fields.phone.value.trim());
             formData.append('email', this.fields.email.value.trim());
             formData.append('message', this.fields.message.value.trim());
             formData.append('agree', this.fields.agree.checked);
             
-            // Добавляем дополнительные поля
+            
             formData.append('_subject', 'Сообщение из футера Космический исследователь');
             formData.append('_language', 'ru');
             formData.append('_page', window.location.href);
             formData.append('_timestamp', new Date().toISOString());
             
-            // Отправка на Formcarry
+            
             const response = await fetch(FOOTER_FORMCARRY_ENDPOINT, {
                 method: 'POST',
                 body: formData,
@@ -388,10 +386,10 @@ class FooterContactForm {
             const result = await response.json();
             
             if (result.code === 200) {
-                // Успешная отправка
+                
                 this.showMessage('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
                 
-                // Очистка формы и LocalStorage
+                
                 setTimeout(() => {
                     this.clearForm();
                 }, 2000);
@@ -402,12 +400,12 @@ class FooterContactForm {
             console.error('Ошибка при отправке формы:', error);
             this.showMessage('Ошибка при отправке формы. Пожалуйста, попробуйте еще раз или свяжитесь с нами другим способом.', 'error');
         } finally {
-            // Скрыть состояние загрузки
+            
             this.setLoadingState(false);
         }
     }
     
-    // Установка состояния загрузки
+    
     setLoadingState(isLoading) {
         this.isLoading = isLoading;
         
@@ -422,16 +420,16 @@ class FooterContactForm {
         }
     }
     
-    // Очистка формы
+   
     clearForm() {
-        // Сброс значений полей
+        
         this.fields.fullName.value = '';
         this.fields.phone.value = '';
         this.fields.email.value = '';
         this.fields.message.value = '';
         this.fields.agree.checked = false;
         
-        // Очистка ошибок
+        
         Object.keys(this.errorFields).forEach(fieldName => {
             this.clearFieldError(fieldName);
             if (fieldName !== 'agree') {
@@ -439,26 +437,26 @@ class FooterContactForm {
             }
         });
         
-        // Очистка стилей чекбокса
+        
         const checkboxGroup = this.form.querySelector('.checkbox-group');
         if (checkboxGroup) {
             checkboxGroup.classList.remove('error', 'success');
         }
         
-        // Очистка сообщений
+        
         this.hideMessage();
         
-        // Очистка LocalStorage
+        
         localStorage.removeItem('footerContactFormData');
         
-        // Сброс данных формы
+        
         this.formData = this.getDefaultFormData();
     }
 }
 
-// Инициализация формы при загрузке DOM
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Проверяем, есть ли форма на странице
+    
     if (document.getElementById('footerContactForm')) {
         window.footerContactForm = new FooterContactForm();
     }

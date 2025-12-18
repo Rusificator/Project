@@ -1,7 +1,7 @@
-// weight-calculator.js
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы DOM
+    
     const weightInput = document.getElementById('earth-weight');
     const unitSelect = document.getElementById('unit-select');
     const currentWeightDisplay = document.getElementById('current-weight-value');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const planetsGrid = document.getElementById('planets-grid');
     const emptyState = document.getElementById('empty-state');
     
-    // Данные о планетах
+    
     const celestialBodies = [
         {
             id: 'mercury',
@@ -105,17 +105,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let selectedPlanet = null;
 
-    // Функция для получения цвета по значению гравитации
+    
     function getWeightColor(gravity) {
-        if (gravity > 1.5) return '#ff6b6b'; // Красный для очень тяжелых
-        if (gravity > 1) return '#ffa726';    // Оранжевый для тяжелых
-        if (gravity < 0.5) return '#4fc3f7';  // Голубой для очень легких
-        return '#66bb6a';                     // Зеленый для нормальных
+        if (gravity > 1.5) return '#ff6b6b'; 
+        if (gravity > 1) return '#ffa726';    
+        if (gravity < 0.5) return '#4fc3f7';  
+        return '#66bb6a';                     
     }
 
-    // Функция для получения темного оттенка цвета
+    
     function getDarkColor(color) {
-        // Преобразуем hex в rgb и делаем темнее
+        
         const hex = color.replace('#', '');
         const r = parseInt(hex.substr(0, 2), 16);
         const g = parseInt(hex.substr(2, 2), 16);
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return `#${darkR.toString(16).padStart(2, '0')}${darkG.toString(16).padStart(2, '0')}${darkB.toString(16).padStart(2, '0')}`;
     }
 
-    // Функция расчета весов
+    
     function calculateWeights() {
         const earthWeight = parseFloat(weightInput.value);
         const unit = unitSelect.value;
@@ -140,24 +140,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Обновляем отображение текущего веса
+        
         currentWeightDisplay.textContent = `${earthWeight} ${unit === 'kg' ? 'кг' : 'фунты'}`;
         
-        // Показываем результаты и скрываем пустое состояние
+        
         resultsSection.style.display = 'block';
         emptyState.style.display = 'none';
         
-        // Очищаем сетку планет
+        
         planetsGrid.innerHTML = '';
         
-        // Рассчитываем вес для каждой планеты
+        
         celestialBodies.forEach(body => {
             let weightOnPlanet;
             let weightDisplay;
             
-            // Конвертируем в фунты если нужно (1 кг = 2.20462 фунтов)
+            
             if (unit === 'lb') {
-                const weightInLbs = earthWeight; // Пользователь ввел в фунтах
+                const weightInLbs = earthWeight; 
                 weightOnPlanet = weightInLbs * body.gravity;
                 weightDisplay = weightOnPlanet.toFixed(1);
             } else {
@@ -178,28 +178,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 comparison = 'Такой же как на Земле';
             }
             
-            // Получаем цвет для планеты
+            
             const weightColor = getWeightColor(body.gravity);
             const darkColor = getDarkColor(weightColor);
             
-            // Создаем карточку планеты
+            
             const planetCard = document.createElement('div');
             planetCard.className = 'planet-card';
             planetCard.dataset.id = body.id;
             
-            // Устанавливаем CSS переменные для цвета
+            
             planetCard.style.cssText = `
                 --weight-color: ${weightColor};
                 --weight-color-dark: ${darkColor};
                 --weight-color-shadow: ${weightColor}40;
             `;
             
-            // Добавляем обработчик клика для выбора планеты
+            
             planetCard.addEventListener('click', () => {
                 selectPlanet(body.id);
             });
             
-            // Заполняем контент карточки
+            
             planetCard.innerHTML = `
                 <div class="planet-image">
                     <div class="planet-icon ${body.image}"></div>
@@ -230,47 +230,47 @@ document.addEventListener('DOMContentLoaded', function() {
             planetsGrid.appendChild(planetCard);
         });
         
-        // Автоматически выбираем Землю при первом расчете
+        
         if (!selectedPlanet) {
             selectPlanet('earth');
         }
     }
 
-    // Функция для выбора планеты
+    
     function selectPlanet(planetId) {
-        // Убираем класс selected у всех планет
+        
         document.querySelectorAll('.planet-card').forEach(card => {
             card.classList.remove('selected');
         });
         
-        // Добавляем класс selected к выбранной планете
+        
         const selectedCard = document.querySelector(`.planet-card[data-id="${planetId}"]`);
         if (selectedCard) {
             selectedCard.classList.add('selected');
             selectedPlanet = planetId;
             
-            // Добавляем анимацию пульсации
+            
             const weightValue = selectedCard.querySelector('.weight-value');
             weightValue.style.animation = 'weightPulse 1s ease-in-out';
             
-            // Убираем анимацию после завершения
+            
             setTimeout(() => {
                 weightValue.style.animation = '';
             }, 1000);
         }
     }
 
-    // Обработчики событий
+    
     weightInput.addEventListener('input', calculateWeights);
     unitSelect.addEventListener('change', calculateWeights);
     
-    // Инициализация калькулятора
+   
     calculateWeights();
     
-    // Фокус на поле ввода при загрузке
+    
     weightInput.focus();
     
-    // Добавляем пример веса для демонстрации
+    
     weightInput.value = '70';
     calculateWeights();
 });

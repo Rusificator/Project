@@ -1,6 +1,4 @@
-/* planets.css */
 
-/* Стили для страницы планет */
 .planets-page {
     padding: 100px 0 4rem;
     min-height: 100vh;
@@ -8,7 +6,7 @@
     z-index: 2;
 }
 
-/* Заголовок страницы */
+
 .page-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -88,7 +86,7 @@
     font-weight: 500;
 }
 
-/* Сетка планет */
+
 .planets-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -253,7 +251,7 @@
     font-size: 0.9rem;
 }
 
-/* Секция карликовых планет */
+
 .category-section {
     margin-bottom: 4rem;
     padding: 1.5rem;
@@ -331,7 +329,7 @@
     line-height: 1.4;
 }
 
-/* Информационная секция */
+
 .info-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -378,7 +376,7 @@
     font-size: 0.95rem;
 }
 
-/* Адаптивность */
+
 @media (max-width: 1200px) {
     .planets-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -504,7 +502,7 @@
     }
 }
 
-/* Цвета для планет */
+
 .mercury {
     --planet-color: #9c9c9c;
     --planet-color-dark: #7a7a7a;
@@ -561,7 +559,7 @@
     --planet-shadow: rgba(66, 165, 245, 0.3);
 }
 
-/* Цвета для карликовых планет */
+
 .dwarf {
     --planet-color: #bdbdbd;
     --planet-color-dark: #9e9e9e;
