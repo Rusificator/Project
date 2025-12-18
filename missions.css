@@ -1,0 +1,650 @@
+/* missions.css */
+
+/* Стили для страницы миссий */
+.missions-page {
+    padding: 100px 0 3rem;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+/* Заголовок страницы */
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.page-title {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+    color: white;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+}
+
+.title-icon {
+    margin-right: 0.5rem;
+    font-size: 2.5rem;
+    vertical-align: middle;
+    animation: launch 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes launch {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.4;
+}
+
+.page-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    min-width: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #42dcff, #bd34fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.125rem;
+    line-height: 1;
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.125rem;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Фильтры миссий */
+.mission-filters {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filters-header {
+    margin-bottom: 1rem;
+}
+
+.filters-header h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #42dcff, #bd34fe);
+    color: white;
+    border-color: transparent;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(66, 220, 255, 0.3);
+}
+
+/* Сетка миссий */
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.mission-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mission-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--mission-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mission-card:hover .mission-image {
+    transform: scale(1.05);
+}
+
+.mission-card:hover .mission-overlay {
+    opacity: 1;
+}
+
+.mission-image-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.mission-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.mission-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+    );
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.mission-type {
+    padding: 0.375rem 0.75rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--mission-color);
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--mission-color);
+}
+
+.mission-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-header {
+    margin-bottom: 1rem;
+}
+
+.mission-name {
+    color: white;
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.mission-date {
+    color: var(--mission-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.date-icon {
+    font-size: 0.8rem;
+}
+
+.mission-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.mission-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label-small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value-small {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.details-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(45deg, var(--mission-color), var(--mission-color-dark));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.details-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.details-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--mission-shadow);
+}
+
+.details-btn:hover::before {
+    left: 100%;
+}
+
+.details-btn:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 0.9rem;
+}
+
+/* Информационная секция */
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.info-card {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.info-card h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.info-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Цвета для типов миссий */
+.mission-card.planetary {
+    --mission-color: #ff6b6b;
+    --mission-color-dark: #f44336;
+    --mission-shadow: rgba(255, 107, 107, 0.2);
+}
+
+.mission-card.orbital {
+    --mission-color: #4fc3f7;
+    --mission-color-dark: #29b6f6;
+    --mission-shadow: rgba(79, 195, 247, 0.2);
+}
+
+.mission-card.manned {
+    --mission-color: #66bb6a;
+    --mission-color-dark: #4caf50;
+    --mission-shadow: rgba(102, 187, 106, 0.2);
+}
+
+.mission-card.telescope {
+    --mission-color: #ffa726;
+    --mission-color-dark: #ff9800;
+    --mission-shadow: rgba(255, 167, 38, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .missions-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .title-icon {
+        font-size: 2rem;
+    }
+    
+    .page-stats {
+        gap: 1rem;
+    }
+    
+    .stat {
+        min-width: 110px;
+        padding: 0.625rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .missions-page {
+        padding: 100px 0 2.5rem;
+    }
+    
+    .page-title {
+        font-size: 1.9rem;
+    }
+    
+    .title-icon {
+        font-size: 1.7rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .page-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .stat {
+        flex: 1;
+        min-width: 100px;
+        max-width: 150px;
+    }
+    
+    .missions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .mission-filters {
+        padding: 1.25rem;
+    }
+    
+    .filter-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    
+    .filter-btn {
+        white-space: nowrap;
+    }
+    
+    .info-section {
+        grid-template-columns: 1fr;
+        margin-top: 3rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 1.6rem;
+    }
+    
+    .title-icon {
+        font-size: 1.4rem;
+    }
+    
+    .mission-card {
+        margin: 0 0.5rem;
+    }
+    
+    .mission-image-container {
+        height: 200px;
+    }
+    
+    .mission-name {
+        font-size: 1.3rem;
+    }
+    
+    .mission-description {
+        font-size: 0.9rem;
+    }
+    
+    .mission-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .details-btn {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+    
+    .info-card {
+        padding: 1.25rem;
+    }
+    
+    .info-icon {
+        font-size: 2rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .info-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Улучшенная футер для страницы миссий */
+.footer-note {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+
+/* Дополнительные стили для особой карточки Гагарина */
+.mission-card.gagarin-special {
+    --mission-color: #FFD700;
+    --mission-color-dark: #D4AF37;
+    --mission-shadow: rgba(255, 215, 0, 0.3);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+.mission-card.gagarin-special::before {
+    content: '⭐ ИСТОРИЧЕСКАЯ МИССИЯ';
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(45deg, #FFD700, #D4AF37);
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.mission-card.gagarin-special .mission-type {
+    background: rgba(255, 215, 0, 0.2);
+    color: #FFD700;
+    border: 1px solid #FFD700;
+}
+
+.mission-card.gagarin-special .mission-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(255, 215, 0, 0.2) 50%,
+        transparent 100%
+    );
+}
+
+.mission-card.gagarin-special .details-btn {
+    background: linear-gradient(45deg, #FFD700, #D4AF37);
+    color: #000;
+    font-weight: 700;
+}
+
+.mission-card.gagarin-special .mission-date {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+/* Полная ширина для дополнительного факта */
+.stat-item.full-width {
+    grid-column: 1 / -1;
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* Анимация пульсации для особой карточки */
+@keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+}
+
+.mission-card.gagarin-special {
+    animation: pulse-gold 2s infinite;
+}
+
+/* Адаптивность для особой карточки */
+@media (max-width: 768px) {
+    .mission-card.gagarin-special::before {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+        top: -10px;
+    }
+}
